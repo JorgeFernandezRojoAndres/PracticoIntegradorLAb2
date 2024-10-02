@@ -68,7 +68,7 @@ router.delete('/eliminar/:id', (req, res) => {
 // Ruta para buscar prescripciones por diagnóstico
 router.get('/buscar/:diagnostico', (req, res) => {
   const { diagnostico } = req.params;
-  const normalizedDiagnostico = normalizeString(diagnostico); // Normalizar el diagnóstico
+  const normalizedDiagnostico = normalizeString(diagnostico); // Normalizar el diagnóstico  
 
   db.query(
     `SELECT * FROM prescripciones WHERE REPLACE(REPLACE(REPLACE(diagnostico, 'á', 'a'), 'é', 'e'), 'í', 'i') LIKE '%Sintomas%';`,

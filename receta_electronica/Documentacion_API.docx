@@ -35,7 +35,7 @@ Contenido tipo: application/json
 Cuerpo de la solicitud: 
 
 { 
-    "dni": "12345678", 
+    "documento": "12345678", 
     "password": "tu_contraseña_segura" 
 } 
  
@@ -47,7 +47,7 @@ powershell
 Copiar código 
 
 Invoke-RestMethod -Uri "http://localhost:3000/medicos/login" -Method POST -ContentType "application/json" -Body '{ 
-    "dni": "12345678", 
+    "documento": "12345678", 
     "password": "tu_contraseña_segura" 
 }' 
  
@@ -88,7 +88,7 @@ Cuerpo:
 
   "documento": "98765432", 
 
-  "dni": "12345678", 
+  "documento": "12345678", 
 
   "especialidad": "Pediatría", 
 
