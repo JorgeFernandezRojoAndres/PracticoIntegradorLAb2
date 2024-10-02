@@ -1,0 +1,126 @@
+Documentación de la API de Receta Electrónica 
+
+ 
+
+1. Introducción 
+
+Introducción 
+
+La API de Receta Electrónica es un sistema diseñado para gestionar la información relacionada con médicos, pacientes y prescripciones médicas de manera eficiente y segura. Esta API permite a los desarrolladores integrar funcionalidades de registro, autenticación y gestión de datos en aplicaciones relacionadas con el ámbito de la salud. 
+
+El objetivo principal de esta API es facilitar la creación y mantenimiento de registros médicos, permitiendo a los médicos prescribir tratamientos y medicamentos a los pacientes de manera digital. La API utiliza métodos de autenticación modernos, como JWT (JSON Web Token), para garantizar la seguridad y la privacidad de los datos de los usuarios. 
+
+Con esta API, se busca optimizar el flujo de trabajo en consultorios y hospitales, mejorando la atención al paciente y reduciendo el uso de documentos en papel. La API está diseñada para ser fácil de usar y se proporciona una documentación completa para ayudar a los desarrolladores a integrarla en sus proyectos. 
+
+ 
+
+2. Autenticación 
+
+Método de autenticación utilizado 
+
+La API de Receta Electrónica utiliza JWT (JSON Web Token) como método de autenticación. JWT es un estándar abierto (RFC 7519) que permite la transmisión segura de información entre partes como un objeto JSON. Este método es ligero y eficiente, ideal para aplicaciones web y móviles. 
+
+Cómo obtener un token 
+
+Para obtener un token, los usuarios (médicos y pacientes) deben iniciar sesión en la API utilizando sus credenciales (DNI y contraseña). A continuación, se presenta un ejemplo de cómo utilizar la ruta de inicio de sesión para obtener un token: 
+
+Ruta de inicio de sesión 
+
+URL: http://localhost:3000/medicos/login 
+
+Método: POST 
+
+Contenido tipo: application/json 
+
+Cuerpo de la solicitud: 
+
+{ 
+    "dni": "12345678", 
+    "password": "tu_contraseña_segura" 
+} 
+ 
+
+Ejemplo de uso en PowerShell: 
+
+powershell 
+
+Copiar código 
+
+Invoke-RestMethod -Uri "http://localhost:3000/medicos/login" -Method POST -ContentType "application/json" -Body '{ 
+    "dni": "12345678", 
+    "password": "tu_contraseña_segura" 
+}' 
+ 
+
+Respuesta de éxito 
+
+Si las credenciales son correctas, la API devolverá un mensaje de éxito junto con el token generado: 
+
+{ 
+    "message": "Inicio de sesión exitoso", 
+    "token": "tu_token_aqui" 
+} 
+ 
+
+Este token debe incluirse en el encabezado de autorización en las solicitudes posteriores para acceder a las rutas protegidas de la API 
+
+. 
+
+3. Rutas y Métodos 
+
+Médicos 
+
+GET /medicos: Obtiene la lista de médicos. 
+
+Ejemplo de uso: GET http://localhost:3000/medicos 
+
+POST /medicos/agregar: Agrega un nuevo médico. 
+
+Cuerpo: 
+
+ 
+
+{ 
+
+  "nombre": "Juan", 
+
+  "apellido": "Pérez", 
+
+  "documento": "98765432", 
+
+  "dni": "12345678", 
+
+  "especialidad": "Pediatría", 
+
+  "domicilio": "Calle Falsa 123", 
+
+  "matricula": "MAT-003", 
+
+  "password": "tu_contraseña_segura" 
+
+} 
+
+	 
+
+ 
+
+Ejemplo de uso: POST http://localhost:3000/medicos/agregar 
+
+Prescripciones 
+
+GET /prescripciones: Obtiene la lista de prescripciones. 
+
+POST /prescripciones/agregar: Agrega una nueva prescripción. 
+
+4. Ejemplos de Respuestas 
+
+Ejemplos de respuestas exitosas y errores para cada ruta. 
+
+5. Notas 
+
+Cualquier otra información relevante sobre el uso de la API. 
+
+ 
+ 
+
+ 
